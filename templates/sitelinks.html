@@ -1,0 +1,34 @@
+<!doctype html>
+<title>AddLink</title>
+<script type="text/javascript" src="http://lib.sinaapp.com/js/jquery/1.8/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $(".deletelink").click(function(){
+  $("#linkid").val($(this).attr("id"));
+  $("#deletelinkform").show();
+});
+});
+</script>
+<form action="/site/{{domain}}" method="POST">
+<input type="hidden" name="action" value="add" />
+链接关键字:<input type="text" name="linkname" /><br>
+链接域名:<input type="text" name="domain" /><br>
+链接类型:<input type="text" name="linktype" value=1 /><br>
+<input type="submit" value="添加" />
+</form>
+{% if links %}
+  {% for link in links %}
+  <li><a href="http://{{ link[2] }}">{{ link[3] }}</a> <a id="{{ link[0] }}" class="deletelink" href="#">删除</a></li>
+  {% endfor %}
+{% else %}
+  <h1>No Link!</h1>
+{% endif %}
+
+<div id="deletelinkform" style="display:none;">
+您确定要删除此链接吗?
+<form action="/site/{{domain}}" method="POST">
+<input type="hidden" name="action" value="delete" />
+<input type="hidden" id="linkid" name="linkid" value="" />
+<input type="submit" value="确定删除" />
+</form>
+</div>

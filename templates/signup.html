@@ -1,0 +1,56 @@
+{% include "header.html" %}
+<!-- Topbar ================================================== -->
+    <nav class="topbar">
+      <div class="topbar-inner">
+        <div class="container">
+          <a class="brand" href="/">DNSPod</a>
+                      <h1 class="nav_string">个人用户注册</h1>          
+        </div>
+      </div>
+    </nav>
+    <!-- Page ================================================== -->
+<div id='page'>
+
+    <div class='container'>
+        <div class="page-account-clean page-signup row">
+        	            <section class='span10'>
+                <form id="form-signup" class="form-stacked" action="/signup" method="POST">
+                    <p class="account-clean-alert-message error"></p>
+                    <fieldset>
+                        <div class="clearfix">
+                        <label for="email">E-Mail</label>
+                        <div class="input">
+                          <input class="xlarge" id="email" name="email" size="30" type="text">
+                          <span class="help-inline"></span>
+                        </div>
+                      </div><!-- /clearfix -->
+                      <div class="clearfix">
+                        <label for="password">密码</label>
+                        <div class="input">
+                          <input class="xlarge" id="password" name="password" size="30" type="password">
+                          <span class="help-inline"></span>
+                        </div>
+                      </div><!-- /clearfix -->
+                    </fieldset>
+                    <div class="">
+                      <button type="submit" class="signup_button"></button>
+                    </div>
+                    <p>
+                    	<a href="/">《DNSPod 域名解析服务协议》</a>
+                    </p>
+                </form>
+            </section>
+            
+            <aside class='span4'>
+                <p>已经有了账户？ 
+                <a href='/signin'>马上登录</a></p>                <br />
+                <br />
+                              <p><span class="enterprise_signup_shortcut"><i class="enterprise_signup_icon"></i> 企业帐号</span><br>
+                如果您是企业用户，请 <a href="/signup?type=enterprise" style="font-size:14px;">注册企业帐号</a><br/>
+                <a href="/">了解更多 &raquo;</a></p>
+            </aside>
+        </div>
+        
+    </div>
+</div><!--end of #page-->
+{% include "footer.html" %}

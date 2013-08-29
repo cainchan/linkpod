@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="zh_CN"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="zh_CN"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="zh_CN"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="zh-CN"><!--<![endif]--><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>LinkPod-免费链接管理平台-你的链接管理专家-一站式链接管理平台</title>
+  <meta name="description" content="LinkPod是国内专业的链接管理平台，致力于为各类网站提供免费链接管理平台。让广大站长朋友一站式管理所有网站链接">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link href="{{ url_for('static', filename='global.css') }}" media="screen" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="http://lib.sinaapp.com/js/jquery/1.8/jquery.min.js"></script>
+  <script src="http://lib.sinaapp.com/js/bootstrap/latest/js/bootstrap.js" type="text/javascript"></script>
+  <script type="text/javascript">
+	$(function(){
+	$(".delete_handle").click(function(){
+	$("#linkid").val($(this).attr("id"));
+	$("#siteid").val($(this).attr("id"));
+	$(".deleteform").show();
+	});
+	$("#deny-confirmation").click(function(){
+	$(".deleteform").hide();
+	});
+	$(".close").click(function(){
+	$(".deleteform").hide();
+	});
+	$("#create-record").click(function(){
+	$("#addlinkform").show();
+	});
+	$(".cancel").click(function(){
+	$("#addlinkform").hide();
+	$("#addsiteform").hide();
+	});
+	$("#create-domain").click(function(){
+	$("#addsiteform").show();
+	});
+	$('.tabs a:last').tab('show')
+	
+	});
+  </script>
+ <!--[if lt IE 9]>
+  <script type="text/javascript">
+// iepp v2.1pre @jon_neal & @aFarkas github.com/aFarkas/iepp
+// html5shiv @rem remysharp.com/html5-enabling-script
+// Dual licensed under the MIT or GPL Version 2 licenses
+/*@cc_on(function(a,b){function r(a){var b=-1;while(++b<f)a.createElement(e[b])}if(!window.attachEvent||!b.createStyleSheet||!function(){var a=document.createElement("div");return a.innerHTML="<elem></elem>",a.childNodes.length!==1}())return;a.iepp=a.iepp||{};var c=a.iepp,d=c.html5elements||"abbr|article|aside|audio|bdi|canvas|data|datalist|details|figcaption|figure|footer|header|hgroup|mark|meter|nav|output|progress|section|subline|summary|time|video",e=d.split("|"),f=e.length,g=new RegExp("(^|\\s)("+d+")","gi"),h=new RegExp("<(/*)("+d+")","gi"),i=/^\s*[\{\}]\s*$/,j=new RegExp("(^|[^\\n]*?\\s)("+d+")([^\\n]*)({[\\n\\w\\W]*?})","gi"),k=b.createDocumentFragment(),l=b.documentElement,m=b.getElementsByTagName("script")[0].parentNode,n=b.createElement("body"),o=b.createElement("style"),p=/print|all/,q;c.getCSS=function(a,b){try{if(a+""===undefined)return""}catch(d){return""}var e=-1,f=a.length,g,h=[];while(++e<f){g=a[e];if(g.disabled)continue;b=g.media||b,p.test(b)&&h.push(c.getCSS(g.imports,b),g.cssText),b="all"}return h.join("")},c.parseCSS=function(a){var b=[],c;while((c=j.exec(a))!=null)b.push(((i.exec(c[1])?"\n":c[1])+c[2]+c[3]).replace(g,"$1.iepp-$2")+c[4]);return b.join("\n")},c.writeHTML=function(){var a=-1;q=q||b.body;while(++a<f){var c=b.getElementsByTagName(e[a]),d=c.length,g=-1;while(++g<d)c[g].className.indexOf("iepp-")<0&&(c[g].className+=" iepp-"+e[a])}k.appendChild(q),l.appendChild(n),n.className=q.className,n.id=q.id,n.innerHTML=q.innerHTML.replace(h,"<$1font")},c._beforePrint=function(){if(c.disablePP)return;o.styleSheet.cssText=c.parseCSS(c.getCSS(b.styleSheets,"all")),c.writeHTML()},c.restoreHTML=function(){if(c.disablePP)return;n.swapNode(q)},c._afterPrint=function(){c.restoreHTML(),o.styleSheet.cssText=""},r(b),r(k);if(c.disablePP)return;m.insertBefore(o,m.firstChild),o.media="print",o.className="iepp-printshim",a.attachEvent("onbeforeprint",c._beforePrint),a.attachEvent("onafterprint",c._afterPrint)})(this,document)@*/
+  </script>
+  <![endif]--> 
+</head>
+<body>

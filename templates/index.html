@@ -1,0 +1,46 @@
+{% include "header.html" %}
+<!-- Topbar ================================================== -->
+    <nav class="topbar">
+      <div class="topbar-inner">
+        <div class="container">
+          <a class="brand" href="http://www.LinkPod.cn/">LinkPod</a>
+		  {% if email %}
+		  <ul class="nav domain">
+            <li><a href="/site">我的网站</a></li>
+		  </ul>
+		  {% endif %}
+           <div class="topbar-infomation">
+        <ul>
+			{% if email %}
+           <li class="email_drop"><span class="name">{{ email }}</span></li>
+              <li class="account_drop"> <a class="account"><span>账户</span> <i class="icon_account_arrow"> </i> </a>
+                <div class="settings-container" data-account="[{&quot;id&quot;:&quot;541987&quot;,&quot;email&quot;:&quot;kaychen.cn@gmail.com&quot;,&quot;password&quot;:&quot;dc221$020297deccc0030d6b614bf5f1786709415feac8478a8fa983f02efbf05b15b4&quot;,&quot;status&quot;:&quot;enabled&quot;,&quot;user_type&quot;:&quot;personal&quot;,&quot;real_name&quot;:&quot;&quot;,&quot;isUnderAgent&quot;:false,&quot;is_agent&quot;:false,&quot;now_user&quot;:true}]">
+                     <ul id="account-dropdown">
+                        <li> <a href="/user"><i class="icon_account_setting"></i>帐户设置</a></li>
+                        <li> <a href="/logout"><i class="icon_account_exit"></i>退出</a> </li>
+                     </ul>
+				</div>
+                </li>
+			{% else %}
+			<li><a href="/signin" class="account"><span>登录</span> </a></li>
+			<li><a href="/signup" class="account"><span>注册</span> </a></li>
+			{% endif %}
+			
+				</ul></div>
+          </div>
+          <!-- <div class='topbar-infomation'> -->
+          <!--     <a class='name'><span>kaychen.cn@gmail.com</span></a> -->
+          <!--     <a class='notification'></a> -->
+          <!--     <a class='account'><span>账户</span></a> -->
+          <!-- </div> -->
+        </div>
+    </nav>
+<!--div style="background:url('http://web.kuaipan.cn/static/themes/images/developers/banner.png') no-repeat center;width:100%;height:390px;text-align:center;"-->
+<div style="text-align:center;">
+<br>
+<h1>LinkPod-免费链接管理平台</h1>
+<br>
+链接管家-打造国内专业的链接管理平台，致力于为各类网站提供免费链接管理平台。让广大站长朋友一站式管理所有网站链接
+<p>敬请期待...</p>
+</div>
+{% include "footer.html" %}

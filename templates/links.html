@@ -1,0 +1,213 @@
+{% include "header.html" %}
+{% include "topbar.html" %}
+<!-- Page ================================================== -->
+<div id="page">
+	<div class="container">    
+		<aside id="sidebar" class="sidebar">
+		<div id="filter" class="filter module">
+			<div class="module_inner">
+            <ul>
+                <li><a href="#all">全部网站</a></li>
+                <li><a class="active" href="#recent">最近网站</a></li>
+                <li><a href="#ismark">星标网站</a></li>
+            </ul>
+            <ul class="user-group"></ul>
+             <ul class="toolbox">
+                <li class="edit">修改</li>
+                <li class="del">删除</li>
+             </ul>
+			</div>
+		</div>
+		<div id="search" class="domain-search module">
+          <div class="module_inner">
+              <div class="input-search">
+                <input placeholder="快速查找网站" class="medium" id="prependedInput" name="prependedInput" size="14" type="text">
+              </div>
+              <ul class="search-result">
+              </ul>
+         </div>
+		</div></aside>
+	<section id="main">
+		<div style="width: 770px;" class="RecordHeader">
+		<div class="record-control">
+		<div class="header">
+            <div class="icon_home"></div>
+            <h3>{{domain}}<a data-original-title="点击立即升级至 DNSPod VIP 套餐" href="https://www.dnspod.cn/Service#/main/linkpod.cn" class="domain-grade-icon D_Free_icon" data-placement="above" rel="twipsy"></a>
+            </h3>
+            <div class="flash-message"></div> 
+            <ul class="tabs">
+                <li><a href="#setting" data-toggle="tab">站点设置</a></li>
+                <li><a href="#statistics" data-toggle="tab">获取代码</a></li>
+                <li><a href="#linkmanage" data-toggle="tab">链接管理</a></li>
+            </ul>
+          </div>            
+   </div>
+   <div class="tab-content">
+   <div class="tab-pane" id="statistics"><div class="record-control">
+   获取代码
+   </div></div>
+   <div class="tab-pane" id="setting"><div class="record-control">
+   站点设置
+   <form action="/site/{{domain}}" method="POST">
+   <input type="hidden" name="action" value="modifysite" />
+   <p>站点名称:<input type="text" name="sitename" value="{{siteinfo[3]}}"/></p>
+   <p>阿里微微:<input type="text" name="alivvid" value="{{siteinfo[4]}}"/></p>
+   <p><input type="submit" value="确定"></p>
+   </form>
+
+   </div></div>
+   <div class="tab-pane active" id="linkmanage">
+	<div class="record-control">
+          <div class="action">
+          <div class="btn-toolbar">
+            <div class="btn-group">
+            <a id="create-record" class="btn success">添加链接</a>
+            </div>
+            <div class="btn-group">
+            <a id="pause-record" class="btn">暂停</a>
+            <a id="start-record" class="btn">启用</a>
+            <a id="remove-record" class="btn">删除</a>
+            </div>
+            <!--
+            <div class="btn-group">
+            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+            更多 
+            <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+            <li><a id='bundle-edit'>批量修改记录值</a></li>
+            <li><a id='mail-shortcut'>快速配置邮件服务</a></li>
+            <li class='divider'></li>
+            <li><a id='modal-test'>TEST</a></li>
+            </ul>
+            </div>
+            -->
+         </div>
+            <div class="search-bar">
+                <input placeholder="快速查找记录" class="record_search" type="text">
+            </div>
+          </div>            
+          <div class="record-header">
+            <table>
+                <thead>
+                <tr>
+                  <th id="" width="10px;"><input class="selected-all" type="checkbox"></th>
+                  <th id="" width="100px;"><span data-key="record_type" data-order="asc" class="order_key">类型</span></th>
+                  <th id="" width="150px;"><span data-key="sub_domain" data-order="asc" class="order_key">关键字</span></th> 
+                  <!--th id="" width="100px;"><span data-key="record_line" data-order="asc" class="order_key">金额</span></th-->
+				  <th id="" width="340px;"><span data-key="value" data-order="asc" class="order_key">域名地址</span></th>
+                  <!--th id="" width="70px;"><span data-key="mx" data-order="asc" class="order_key">开始</span></th>
+                  <th id="" width="40px;"><span data-key="ttl" data-order="asc" class="order_key">结束</span></th-->
+                  <th id="" width="100px;"><span class="">操作</span></th>
+                </tr>
+                </thead>               
+            </table>
+          </div>            
+   </div>
+   <div id="main-content">
+   <div id="record-list">
+<div id="addlinkform"  style="display:none;">
+<div class="entry-header status_edit">
+	<form action="/site/{{domain}}" method="POST">
+	<input type="hidden" name="action" value="add" />                  
+                    <div class="entry-checkbox">
+                        <input type="checkbox">
+                    </div>
+
+                    <div data-helper="what-record-type" class="entry-type">
+                      <select class="mini" name="linktype" data-name="record_type" name="mediumSelect" id="mediumSelect" style="">
+						<option>首页</option>
+                        <option>全站</option>
+                      </select>
+                    </div>
+                    <div class="entry-name">
+                        <input autocomplete="off" name="linkname" data-name="sub_domain" data-helper="what-record-name" class="mini ac_input" value="" type="text">
+                    </div>
+                    <div class="entry-value">
+                        <input autocomplete="off" name="domain" data-name="value" data-helper="what-record-value" class="medium-130 ac_input" value="" type="text">
+                    </div>
+                    <!--div data-helper="what-record-line" class="entry-line">
+                      <select data-name="record_line" class="mini" style="width:80px">
+                                                        <option>默认</option>
+                          </select>
+                    </div>
+                    <div class="entry-mx">
+                        <input data-name="mx" disabled="" data-helper="what-mx" class="mini-20" value="" type="text">
+                    </div>
+                    <div class="entry-ttl">
+                        <input data-name="ttl" data-helper="what-ttl" class="mini-40" value="600" type="text">
+                    </div-->
+                    <table class="entry-operation" border="0" cellpadding="0" cellspacing="0">
+                      <tbody><tr>
+                        <th><button class="button secondary tiny save" onclick="this.submit()">保存</button></th>
+                        <th><button class="button tiny cancel" type="button">取消</button></th>
+                      </tr>
+                    </tbody></table>
+	</form>
+                  </div>
+   </div>
+{% if links %}
+  {% for link in links %}
+   <div class="entry">
+   <div class="entry-header ">                    
+                  <div class="entry-checkbox">
+                     <input class="record-checkbox" value="{{ link[0] }}" name="check" type="checkbox">
+                  </div>
+                  <div class="entry-type field">
+                      <span>首页</span>
+                  </div>
+                  <div class="entry-name field">
+                      <span>{{ link[3] }}</span>
+                  </div>
+                  <!--div class="entry-line field">
+                      <span>默认</span>
+                  </div-->
+                  <div class="entry-value field">
+                      <span>{{ link[2] }}</span>
+                  </div>
+                  <!--div class="entry-mx field">
+                      <span>-</span>
+                  </div>
+                  <div class="entry-ttl field">
+                      <span>600</span>
+                  </div-->
+
+                  <table class="entry-operation" border="0" cellpadding="0" cellspacing="0">
+                     <tbody><tr>
+						<th><a id="{{ link[0] }}" class="delete_handle">删除</a></th>
+						<th><a class="disable_handle">暂停</a></th>
+						<!--th><a href="#"><div data-placement="above" rel="twipsy" title="点击立刻开启" class="icon_monitor_Null"></div></a></th>
+                        <th><div data-placement="above" rel="twipsy" title="点击添加备注" class="icon_empty_note"></div></th-->
+                        </tr>
+                     </tbody>
+                  </table>
+                </div>
+   </div>
+   {% endfor %}
+   {% endif %}
+   </div></div>
+   </div></div>
+   </section><!--end of main section-->
+      </div><!--end of container-->    
+    </div><!--end of #page-->
+
+<div class="deleteform" style="display:none;">
+<div class="modal-backdrop fade in"></div>
+<div style="display:block;" class="modal hide fade in">
+<div class="modal-header"> 
+<a class="close">×</a> 
+<h3>删除链接</h3> </div>
+	<div class="modal-body">  <span class="d_message-inline notice"><i></i></span><p>删除本链接，确认删除吗？</p> 
+	<div style="clear:both"></div> 
+	</div> 
+<div class="modal-footer">
+<form action="/site/{{domain}}" method="POST" name="deletelinkform">
+<input type="hidden" name="action" value="delete" />
+<input type="hidden" id="linkid" name="linkid" value="" />
+</form>
+<button id="deny-confirmation" class="button cancel">取消</button> 
+<button id="pass-confirmation" class="button secondary" onclick="deletelinkform.submit()">确认</button>
+</div>
+</div>
+</div>
+{% include "footer.html" %}

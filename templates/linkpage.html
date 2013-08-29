@@ -1,0 +1,8 @@
+{% if links %}
+  {% for link in links %}
+  <a href="{{ link[2] }}" target="_blank">{{ link[3] }}</a>
+  {% endfor %}
+{% endif %}
+{% if alivvlink %}
+	{{ alivvlink }}
+{% endif %}

@@ -1,0 +1,65 @@
+{% include "header.html" %}
+ <!-- Topbar
+    ================================================== -->
+    <nav class="topbar">
+      <div class="topbar-inner">
+        <div class="container">
+          <a class="brand" href="/">DNSPod</a>
+                      <h1 class="nav_string">登录</h1>          
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page
+    ================================================== -->
+
+    <div id='page'>
+
+    <div class='container'>
+        <div class="page-account-clean page-login row">
+            <section class='span10'>
+                <form id="form-login" class="form-stacked" action="/signin" method="POST">
+					{% if signin_failed %}
+						<p class="account-clean-alert-message error">登录失败</p>
+					{% endif %}
+                    <fieldset>
+                      <div class="clearfix">
+                        <label for="email">E-Mail</label>
+                        <div class="input">
+                          <input class="xlarge" id="email" name="email" size="30" type="text">
+                          <span class="help-inline"></span>
+                        </div>
+                      </div><!-- /clearfix -->
+                      <div class="clearfix">
+                        <label for="password">密码</label>
+                        <div class="input">
+                          <input class="xlarge" id="password" name="password" size="30" type="password">
+                          <span class="help-inline"></span>
+                        </div>
+                      </div><!-- /clearfix -->
+                      <div class="clearfix">
+                        <div class="input">
+                          <label>
+                          <input type="checkbox" name="remember" value="1">
+                            <span>一个月内自动登录</span>
+                                                    </label>
+                        </div>
+                      </div>
+                    </fieldset>
+                    <div class="">
+                      <button type="submit" class="login_button"></button>
+                    </div>
+                </form>
+            </section>
+            
+            <aside class='span4'>
+                <p>还没有帐号？ <a href="/signup">立即注册</a></p>
+                <p>&raquo; <a href="/signin/Forgot">忘记密码</a></p>
+                                
+            </aside>
+        </div>        
+        
+    </div>
+</div><!--end of #page-->
+{% include "footer.html" %}

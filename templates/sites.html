@@ -1,0 +1,151 @@
+{% include "header.html" %}
+{% include "topbar.html" %}
+<!-- Page ================================================== -->
+<div id="page">
+	<div class="container">    
+        <aside id="sidebar" class="sidebar">
+        <div id="filter" class="filter module">
+		<div class="module_inner">
+             <ul>
+             <li><a href="#all">全部网站</a></li>
+             <li><a class="active" href="#recent">最近网站</a></li>
+             <li><a href="#ismark">星标网站</a></li>
+             </ul>
+             <ul class="user-group"></ul>
+             <ul class="toolbox">
+                <li class="edit">修改</li>
+                <li class="del">删除</li>
+             </ul>
+		</div>
+		</div>
+		<div id="search" class="domain-search module">
+		<div class="module_inner">
+			<div class="input-search">
+            <input placeholder="快速查找网站" class="medium" id="prependedInput" name="prependedInput" size="14" type="text">
+			</div>
+            <ul class="search-result"></ul>
+        </div>
+		</div>
+   </aside>
+    
+         <section id="main">最新公告 >> 滚动新闻
+		 <div class="domain-control">
+		 <div class="header">
+             <h3>网站列表</h3>
+            <div class="flash-message">         
+         </div>
+            <div style="clear:both"></div>
+          <div class="action">
+          <div class="btn-toolbar">
+            <div class="btn-group">
+            <a id="create-domain" class="btn success">添加网站</a>
+            </div>
+            <div class="btn-group" id="domain-group">
+            <a id="set-group" class="btn dropdown-toggle" data-toggle="dropdown" href="#">分组<span class="caret"></span></a>
+            <ul class="dropdown-menu domain-group"><li id="create-group" class="new-item"><a href="#">新建分组</a></li></ul>
+			</div>
+			<!--
+            <div class="btn-group">
+            <a id='disable-domain' class="btn">暂停</a>
+            <a id='enable-domain' class="btn" >启用</a>
+            <a id='delete-domain' class="btn">删除</a>
+            </div>
+			-->
+            <div class="btn-group">
+            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+               更多 
+               <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+            <li><a id="disable-domain">暂停</a></li>
+            <li><a id="enable-domain">启用</a></li>
+            <li><a id="delete-domain">删除</a></li>
+            <!--
+               <li><a href='#'>批量修改</a></li>
+               <li class='divider'></li>
+               <li><a href='#'>快捷添加邮件配置</a></li>
+            -->
+            </ul>
+         </div>
+          </div>
+   </div></div></div>
+   <div id="main-content">
+      <div class="domain-header">
+            <input value="none" class="selectAll" type="checkbox">
+            <span>网站</span>
+      </div>
+				<div id="domain-list">
+	<div id="addsiteform" style="display:none;">			
+		<div class="entry">
+			<form action="/site" method="POST">
+			<input type="hidden" name="action" value="add" />   
+			<div statsus-data="  ">
+                    <div class="entry-checkbox">
+                        <input type="checkbox">
+                    </div>
+                                         <div class="entry-star-disable"></div>
+                    <div class="entry-domain entry-domain-create">
+                        
+                        <input placeholder="请输入您的网站名称" name="sitename" class="xlarge" autofocus="" type="text">
+						<input placeholder="请输入您的域名" name="domain" class="xlarge" autofocus="" type="text">
+                        <button class="yes_handle yes button secondary" onclick="this.submit()">确 定</button>
+                        <button class="no button cancel" type="button">取 消</button>
+                    </div>
+                    <table class="entry-status" border="0" cellpadding="0" cellspacing="0">
+                      <tbody><tr>
+                      </tr>
+                    </tbody></table>
+                    <!--DNS错误状态-->
+                    <div class="entry-desc">
+                      <span></span>
+                    </div>
+			</div>
+		</form>
+		</div>
+	</div>
+				
+				{% if sites %}
+				{% for site in sites %}
+					<div class="entry">      
+					<div class="normal " data-status="">
+                    <div class="entry-checkbox">
+                        <input value="{{ site[0] }}" name="check" type="checkbox">
+                    </div>
+                    <div class="entry-star handle"></div>
+                    <div class="entry-domain"><a href="/site/{{ site[2] }}">{{ site[3] }}</a></div>
+                    <table class="entry-status" border="0" cellpadding="0" cellspacing="0">
+                    <tbody><tr>
+                    <th data-placement="above" rel="twipsy" title="点击添加备注" class="icon_empty_note"></th>
+                    </tr>
+                    </tbody></table>
+                    <!--DNS错误状态-->
+					<div class="entry-desc"><a id="{{ site[0] }}" class="delete_handle"><span>删除</span></a></div>
+                </div><!--end of a domain entry--></div>
+				{% endfor %}
+				{% endif %}
+				</div>
+	</div></section><!--end of main section-->
+	</div><!--end of container-->    
+	</div><!--end of #page-->
+	
+<div class="deleteform" style="display:none;">
+<div class="modal-backdrop fade in"></div>
+<div style="display:block;" class="modal hide fade in">
+<div class="modal-header"> 
+<a class="close">×</a> 
+<h3>删除网站</h3> </div>
+	<div class="modal-body">  <span class="d_message-inline notice"><i></i></span><p>删除本网站，确认删除吗？</p> 
+	<div style="clear:both"></div> 
+	</div> 
+<div class="modal-footer">
+<form action="/site" method="POST" name="deletesiteform">
+<input type="hidden" name="action" value="delete" />
+<input type="hidden" id="siteid" name="siteid" value="" />
+</form>
+<button id="deny-confirmation" class="button cancel">取消</button> 
+<button id="pass-confirmation" class="button secondary" onclick="deletesiteform.submit()">确认</button>
+</div>
+</div>
+</div>
+	
+{% include "footer.html" %}
